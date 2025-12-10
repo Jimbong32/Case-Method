@@ -47,3 +47,54 @@ public class InnerMagang {
 
         System.out.print("Nama mahasiswa : ");
         m.nama = input.nextLine();
+        System.out.print("NIM            : ");
+        m.nim = input.nextLine();
+
+        System.out.print("Program Studi  : ");
+        m.prodi = input.nextLine();
+
+        System.out.print("Perusahaan     : ");
+        m.perusahaan = input.nextLine();
+
+        // Validasi semester hanya 6 atau 7
+        do {
+            System.out.print("Semester (6/7) : ");
+            m.semester = input.nextInt();
+            if (m.semester != 6 && m.semester != 7) {
+                System.out.println("Semester harus 6 atau 7!");
+            }
+        } while (m.semester != 6 && m.semester != 7);
+        input.nextLine();
+
+        // Validasi status magang
+        do {
+            System.out.print("Status (Diterima/Menunggu/Ditolak) : ");
+            m.status = input.nextLine();
+            if (!m.status.equalsIgnoreCase("Diterima") &&
+                !m.status.equalsIgnoreCase("Menunggu") &&
+                !m.status.equalsIgnoreCase("Ditolak")) {
+                System.out.println("Status tidak valid!");
+            }
+        } while (!m.status.equalsIgnoreCase("Diterima") &&
+                 !m.status.equalsIgnoreCase("Menunggu") &&
+                 !m.status.equalsIgnoreCase("Ditolak"));
+
+        data[jumlahData] = m;
+        jumlahData++;
+
+        System.out.println("Data berhasil ditambahkan!");
+    }
+
+    // ----------------------------------------------------------
+    // 2. Tampilkan Semua Data (Format TABEL)
+    // ----------------------------------------------------------
+    static void tampilData() {
+        if (jumlahData == 0) {
+            System.out.println("Belum ada data pendaftar!");
+            return;
+        }
+
+        System.out.println("\n==========================================================================================");
+        System.out.printf("| %-15s | %-10s | %-10s | %-15s | %-8s | %-10s |\n",
+                "Nama", "NIM", "Prodi", "Perusahaan", "Semester", "Status");
+        System.out.println("==========================================================================================");
